@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
 # organize_downloads.py
+# version: 1.0
+# date: 16-January-2026
 # author: Chris C. Gaskins
-# https://github.com/cgaskins-tx/organize_downloads
+# github: https://github.com/cgaskins-tx/organize_downloads
+
 
 import os
 import shutil
