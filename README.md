@@ -1,6 +1,6 @@
 # Downloads Folder Organizer
 
-A lightweight, zero-dependency Python script designed to automatically organize your chaotic Downloads folder. 
+A lightweight, zero-dependency Python script designed to automatically organize your chaotic Downloads folder.
 
 It sorts files into logical categories (Documents, Images, Code, etc.) based on file extensions, but only touches files that are older than a specific time threshold (default: 24 hours). This ensures that files you are currently working with remain in the root directory, while older clutter gets filed away.
 
@@ -33,6 +33,55 @@ The script automatically creates these directories if they don't exist and sorts
 | **Folders** | Sub-directories | Any directory found in root |
 | **Misc** | Everything else | Any extension not explicitly defined above |
 
+## 🛠️ Companion Utilities
+
+This repository includes three additional utility scripts to help you analyze and manage your Downloads folder. These scripts use the `rich` library for beautiful terminal output.
+
+### Prerequisites for Utilities
+Install the required library:
+
+    pip3 install rich
+
+### 1. Find Largest Files (`find_largest.py`)
+Scans the Downloads folder (recursively) to find space hogs.
+* **Default:** Shows the top 10 largest files.
+* **Custom:** Pass a number to see more (e.g., `find_largest.py 20`).
+* **Features:** Displays size, type, date, and sub-folder location.
+
+**Usage:**
+
+    ./find_largest.py      # Top 10
+    ./find_largest.py 50   # Top 50
+
+### 2. Find Recent Files (`find_recent.py`)
+Quickly find the files you just downloaded, even if they are buried in sub-folders.
+* **Default:** Shows the top 10 most recent files.
+* **Features:** Sorted by newest first. Includes clickable links (see below).
+
+**Usage:**
+
+    ./find_recent.py
+
+### 3. Download Stats (`download_stats.py`)
+A dashboard for your Downloads folder.
+* **Overview:** Displays total size, file count, and the oldest/newest files in the directory.
+* **Breakdown:** Shows a table of every sub-directory (Documents, Images, etc.) with their individual sizes and file counts.
+
+**Usage:**
+
+    ./download_stats.py
+
+## 💡 Pro Tip: Interactive Terminal Links
+
+The `find_largest.py` and `find_recent.py` scripts generate **clickable hyperlinks** for filenames and locations.
+
+* **Clicking a Filename:** Opens the file in its default application.
+* **Clicking a Location:** Opens that specific folder in Finder (macOS) or File Manager.
+
+**Requirements:**
+1.  **Terminal Support:** Works best in **iTerm2** (macOS) or modern terminals that support the hyperlink escape sequence.
+2.  **How to Click:** In most terminals, hold **Command (⌘)** (or Ctrl on Linux) while clicking the link.
+
 ## ⚙️ Configuration
 
 Open the `organize_downloads.py` script to adjust the configuration variables found at the top of the file:
@@ -63,7 +112,7 @@ Open your crontab config:
     crontab -e
 
 ### 2. Add the Job
-Add the following line to run the script every night at **3:00 AM**. 
+Add the following line to run the script every night at **3:00 AM**.
 
 *Note: Replace `/path/to/` with the actual path where you saved the script.*
 
